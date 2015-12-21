@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <!--xmlns:cc="http://java.sun.com/jsf/composite/components">-->
+    <h:head>
+        <title>Флюорокартотека</title>
+        <meta charset="utf-8" />
+        <h:outputScript library="js" name="locale.js" />
+        <h:outputStylesheet library="styles" name="main.css" />
+        <f:metadata>
+            <!--<f:viewAction action="#{listmanBean.searchOrFilter()}" />-->
+        </f:metadata>
+    </h:head>
+
+    <h:body>
+        <!--<ui:include src="/WEB-INF/templates/timeout.xhtml" />-->
+
+        <h:form id="frmList">
+            <p:outputPanel>
+                <p:panel header="Пользователь">
+                    <ui:include src="/WEB-INF/templates/userpanel.xhtml" />
+                </p:panel>
+                <p:panel header="Поиск пациента">
+                    <!--<h:panelGrid id="searchParams" columns="10" focus="fam">-->
+                    <h:panelGrid id="searchParams" columns="10">
+                        <!--<p:outputLabel for="fam" value="Фамилия" />-->
+                        <p:inputText id="fam" value="#{listmanBean.srcFam}" placeholder="Фамилия" />
+                        <!--<p:outputLabel for="im" value="Имя" />-->
+                        <p:inputText id="im" value="#{listmanBean.srcIm}" placeholder="Имя" />
+                        <!--<p:outputLabel for="ot" value="Отчество" />-->
+                        <p:inputText id="ot" value="#{listmanBean.srcOt}" placeholder="" />
+                        <!--<p:outputLabel for="dr" value="Дата рождения" />-->
+                        <p:calendar id="dr" value="#{listmanBean.srcDr}" 
+                                    locale="#{applicationBean.locale.language}" 
+                                    pattern="#{applicationBean.dateFormat.toPattern()}"
+                                    placeholder="Дата рождения"/>
+                        <p:commandButton id="search" 
+                                         value="Найти" 
+                                         action="#{listmanBean.search()}"
+                                         />
+                        <!--update="patientTable msg-search"  />-->
+                        <p:commandButton id="btn-showall" 
+                                         value="Показать всех"
+                                         action="#{listmanBean.clearSearch()}" />
+                                         <!--update="searchParams patientTable msg-search" />-->
+                        <!--                        
+                                                <p:blockUI block="frmList" trigger="search" />-->
+                    </h:panelGrid>
+                </p:panel>
+            </p:outputPanel>
+        </h:form>
+    </h:body>
+
+</html>

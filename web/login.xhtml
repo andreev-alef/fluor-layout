@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Флюорокартотека: Вход в систему</title>
+        <meta charset="utf-8" />
+        <h:outputStylesheet library="styles" name="main.css" />
+    </h:head>
+    <h:body styleClass="root">
+        <h:form id="login">
+            <p:panel styleClass="login_block">
+                <p:messages id="messages" autoUpdate="false" closable="true" />
+                <h:panelGrid columns="1" styleClass="login_block_content">
+                    <h1 class="header_fluor">
+                        <span class="fluoro">Флюоро</span>картотека
+                    </h1>
+                    <p:inputText id="username" styleClass="input_user_name" required="true" value="#{loginBean.login}" placeholder="Имя пользователя"/>
+                    <p:password id="password" styleClass="input_user_password" required="true"  value="#{loginBean.password}" placeholder="Пароль"/>
+                </h:panelGrid>
+                <p:commandButton styleClass="btn_login"
+                                 id="btn-login"
+                                 value="#{loginPageBean.buttonCaption}"
+                                 update="messages"
+                                 actionListener="#{loginBean.login}"
+                                 ajax="false"
+                                 escape="false" />
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
+<!--<p:outputLabel for="username" value="Имя пользователя" />-->
+<!--<p:outputLabel for="password" value="Пароль" />-->
+<!--Войти в систему-->
+<!--name="username"-->
+<!--name="password"-->

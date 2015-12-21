@@ -27,6 +27,8 @@ public class LoginPageBean implements Serializable {
         }
         return buttonCaption;
     }
+    
+    
 
     /**
      * Creates a new instance of LoginPageBean
